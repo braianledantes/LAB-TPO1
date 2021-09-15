@@ -1,9 +1,7 @@
-import caballero.ArmaduraDecorator;
 import caballero.Caballero;
 import utiles.Aleatorio;
 
-public class Jugador implements Runnable {
-    private String nombre;
+public class Jugador extends Thread {
     private final int turno;
     private int oro;
     private Caballero caballero;
@@ -18,7 +16,7 @@ public class Jugador implements Runnable {
     private boolean tieneEspeda = false, tieneArmadura = false, tieneEscudo = false;
 
     public Jugador(String nombre, int turno, int oro, Caballero caballero, Batalla batalla, Tienda tienda) {
-        this.nombre = nombre;
+        super(nombre);
         this.turno = turno;
         this.oro = oro;
         this.caballero = caballero;
@@ -84,9 +82,6 @@ public class Jugador implements Runnable {
         }
     }
 
-    public String getNombre() {
-        return this.nombre;
-    }
 
     public Caballero getCaballero() {
         return caballero;
@@ -95,7 +90,7 @@ public class Jugador implements Runnable {
     @Override
     public String toString() {
         return "Jugador{" +
-                "nombre='" + nombre + '\'' +
+                "nombre='" + getName() + '\'' +
                 ", oro=" + oro +'\'' +
                 ", danio=" + caballero.getAtaqueBase() +
                 '}';

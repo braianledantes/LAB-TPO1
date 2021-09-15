@@ -26,13 +26,16 @@ public class Partida {
     }
 
     public void inicar() {
-        Thread j1 = new Thread(jugador1, jugador1.getNombre());
-        Thread j2 = new Thread(jugador2, jugador2.getNombre());
+//        Thread j1 = new Thread(jugador1);
+//        Thread j2 = new Thread(jugador2);
+//
+//        j1.start();
+//        j2.start();
 
-        j1.start();
-        j2.start();
+        ExecutorService pool = Executors.newFixedThreadPool(2);
+        pool.submit(jugador1);
+        pool.submit(jugador2);
 
-        ExecutorService executorService = Executors.newFixedThreadPool(2);
-
+        pool.shutdown();
     }
 }

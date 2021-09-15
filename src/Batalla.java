@@ -9,11 +9,14 @@ public class Batalla {
 
     public synchronized void resolverBatalla(int turnoJugador, Caballero caballeroAtacante, Caballero caballeroAtacado) {
         try {
-            while (!turno.esTurno(turnoJugador)) {
+            while (!turno.esTurno(turnoJugador) ) {
                 wait();
             }
             caballeroAtacante.atacar(caballeroAtacado);
-            System.out.println(Thread.currentThread().getName() + " atacando, turno: " + turno.getTurnoActual() + ", turnoJugador: " + turnoJugador + ", Jugador atacado: " + caballeroAtacado.toString());
+            System.out.println(Thread.currentThread().getName() +
+                    " atacando, turno: " + turno.getTurnoActual() +
+                    ", turnoJugador: " + turnoJugador +
+                    ", Jugador atacado: " + caballeroAtacado);
             //System.out.println(caballeroAtacante.toString() + " VS " + caballeroAtacado.toString());
 
             System.out.println("------------------------------------------------");
