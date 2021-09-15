@@ -44,6 +44,7 @@ public class Jugador implements Runnable {
             irATienda();
 
             jugadorOponente.incrementarOro();
+
             if (!this.caballero.estaVivo()) {
                 tienda.curarCaballero(this.caballero);
                 jugadorOponente.incrementarOro();
