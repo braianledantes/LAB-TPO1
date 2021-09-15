@@ -18,6 +18,7 @@ public class CaballeroBase implements Caballero {
     @Override
     public void recibirDanio(int danio) {
         this.vida -= danio;
+        if (this.vida < 0) this.vida = 0;
     }
 
     public int getVida() {

@@ -36,21 +36,25 @@ public class Jugador implements Runnable {
 
     public void decrementarOro(int x) {
         this.oro -= x;
+        if (this.oro < 0) this.oro = 0;
     }
 
     @Override
     public void run() {
         int i = 0;
         while (i < 12) {
-            System.out.println(this);
-            batalla.resolverBatalla(turno, caballero, jugadorOponente.caballero);
+            if (this.caballero.estaVivo()) {
 
-            irATienda();
+                System.out.println(this);
+                batalla.resolverBatalla(turno, caballero, jugadorOponente.caballero);
 
-            //jugadorOponente.incrementarOro();
-            if (!this.caballero.estaVivo()) {
-                tienda.curarCaballero(this.caballero);
-                jugadorOponente.incrementarOro();
+                irATienda();
+
+                //jugadorOponente.incrementarOro();
+                if (!this.caballero.estaVivo()) {
+                    tienda.curarCaballero(this.caballero);
+                    jugadorOponente.incrementarOro();
+                }
             }
             i++;
         }
@@ -60,19 +64,19 @@ public class Jugador implements Runnable {
         switch (Aleatorio.intAleatorio(1, 3)) {
             case 1 -> {
                 if (!tieneEspeda) {
-                    this.caballero = tienda.comprarEspada(this.oro, this.caballero);
+                    this.caballero = tienda.comprarEspada(this.oro, this);
                     tieneEspeda = true;
                 }
             }
             case 2 -> {
                 if (!tieneEscudo) {
-                    this.caballero = tienda.comprarEscudo(this.oro, this.caballero);
+                    this.caballero = tienda.comprarEscudo(this.oro, this);
                     tieneEscudo = true;
                 }
             }
             case 3 -> {
                 if (!tieneArmadura) {
-                    this.caballero = tienda.comprarArmadura(this.oro, this.caballero);
+                    this.caballero = tienda.comprarArmadura(this.oro, this);
                     tieneArmadura = true;
 
                 }
@@ -82,6 +86,10 @@ public class Jugador implements Runnable {
 
     public String getNombre() {
         return this.nombre;
+    }
+
+    public Caballero getCaballero() {
+        return caballero;
     }
 
     @Override

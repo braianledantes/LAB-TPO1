@@ -16,6 +16,8 @@ public class Batalla {
             System.out.println(Thread.currentThread().getName() + " atacando, turno: " + turno.getTurnoActual() + ", turnoJugador: " + turnoJugador + ", Jugador atacado: " + caballeroAtacado.toString());
             //System.out.println(caballeroAtacante.toString() + " VS " + caballeroAtacado.toString());
 
+            System.out.println("------------------------------------------------");
+
             turno.siguienteTurno();
         } catch (InterruptedException e) {
             e.printStackTrace();

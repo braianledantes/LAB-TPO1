@@ -19,29 +19,35 @@ public class Tienda {
 
     public Tienda() {
         this.costoEspada = 120;
-        this.costoArmadura = 120;
-        this.costoEscudo = 120;
+        this.costoArmadura = 150;
+        this.costoEscudo = 80;
     }
 
-    public Caballero comprarEspada(int oroJugador, Caballero caballero) {
-        if (costoEspada < oroJugador)
-            return new EspadaDecorator(caballero);
+    public Caballero comprarEspada(int oroJugador, Jugador jugador) {
+        if (costoEspada < oroJugador) {
+            jugador.decrementarOro(costoEspada);
+            return new EspadaDecorator(jugador.getCaballero());
+        }
         else
-            return caballero;
+            return jugador.getCaballero();
     }
 
-    public Caballero comprarEscudo(int oroJugador, Caballero caballero) {
-        if (costoEscudo < oroJugador)
-            return new EscudoDecorator(caballero);
+    public Caballero comprarEscudo(int oroJugador, Jugador jugador) {
+        if (costoEscudo < oroJugador) {
+            jugador.decrementarOro(costoEscudo);
+            return new EscudoDecorator(jugador.getCaballero());
+        }
         else
-            return caballero;
+            return jugador.getCaballero();
     }
 
-    public Caballero comprarArmadura(int oroJugador, Caballero caballero) {
-        if (costoArmadura < oroJugador)
-            return new ArmaduraDecorator(caballero);
+    public Caballero comprarArmadura(int oroJugador, Jugador jugador) {
+        if (costoArmadura < oroJugador){
+            jugador.decrementarOro(costoArmadura);
+            return new ArmaduraDecorator(jugador.getCaballero());
+        }
         else
-            return caballero;
+            return jugador.getCaballero();
     }
 
     public void curarCaballero(Caballero caballero) {
