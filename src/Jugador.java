@@ -34,16 +34,20 @@ public class Jugador implements Runnable {
         this.oro += Aleatorio.intAleatorio(30, 80);
     }
 
+    public void decrementarOro(int x) {
+        this.oro -= x;
+    }
+
     @Override
     public void run() {
         int i = 0;
-        while (i < 5) {
+        while (i < 12) {
             System.out.println(this);
             batalla.resolverBatalla(turno, caballero, jugadorOponente.caballero);
 
             irATienda();
 
-            jugadorOponente.incrementarOro();
+            //jugadorOponente.incrementarOro();
             if (!this.caballero.estaVivo()) {
                 tienda.curarCaballero(this.caballero);
                 jugadorOponente.incrementarOro();
@@ -84,7 +88,8 @@ public class Jugador implements Runnable {
     public String toString() {
         return "Jugador{" +
                 "nombre='" + nombre + '\'' +
-                ", oro=" + oro +
+                ", oro=" + oro +'\'' +
+                ", danio=" + caballero.getAtaqueBase() +
                 '}';
     }
 }

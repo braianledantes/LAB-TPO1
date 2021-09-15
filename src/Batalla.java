@@ -12,9 +12,9 @@ public class Batalla {
             while (!turno.esTurno(turnoJugador)) {
                 wait();
             }
-            //System.out.println(Thread.currentThread().getName() + " atacando, turno: " + turno.getTurnoActual() + ", turnoJugador: " + turnoJugador);
-            System.out.println(caballeroAtacante.toString() + " VS " + caballeroAtacado.toString());
             caballeroAtacante.atacar(caballeroAtacado);
+            System.out.println(Thread.currentThread().getName() + " atacando, turno: " + turno.getTurnoActual() + ", turnoJugador: " + turnoJugador + ", Jugador atacado: " + caballeroAtacado.toString());
+            //System.out.println(caballeroAtacante.toString() + " VS " + caballeroAtacado.toString());
 
             turno.siguienteTurno();
         } catch (InterruptedException e) {

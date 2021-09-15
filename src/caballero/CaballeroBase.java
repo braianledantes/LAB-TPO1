@@ -42,7 +42,7 @@ public class CaballeroBase implements Caballero {
     public String toString() {
         return this.getClass().getSimpleName() + "{" +
                 "vida=" + vida +
-                ", ataqueBase=" + ataqueBase +
+                //", ataqueBase=" + ataqueBase +
                 '}';
     }
 }

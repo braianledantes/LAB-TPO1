@@ -1,5 +1,6 @@
 import caballero.Caballero;
 import caballero.CaballeroBase;
+import utiles.Aleatorio;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -14,8 +15,8 @@ public class Partida {
         tienda = new Tienda();
         turno = new Turno(2);
         batalla = new Batalla(turno);
-        Caballero caballero1 = new CaballeroBase(20);
-        Caballero caballero2 = new CaballeroBase(20);
+        Caballero caballero1 = new CaballeroBase(Aleatorio.intAleatorio(10, 20));
+        Caballero caballero2 = new CaballeroBase(Aleatorio.intAleatorio(15, 20));
 
         jugador1 = new Jugador(nombreJugador1, 1, 100, caballero1, batalla, tienda);
         jugador2 = new Jugador(nombreJugador2, 2, 100, caballero2, batalla, tienda);
