@@ -1,6 +1,9 @@
 import caballero.Caballero;
 import utiles.Aleatorio;
 
+/**
+ * Esta clase extiende de Thread por lo tanto implementa la interfaz Runnable.
+ */
 public class Jugador extends Thread {
     private final int turno;
     private int oro;
